@@ -34,9 +34,12 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
-    "django.contrib.sessions",
+    "django.contrib.sessions", 
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
+    "api.apps.ApiConfig",
+    "frontend.apps.FrontendConfig"
 ]
 
 MIDDLEWARE = [
@@ -62,8 +65,6 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "api.apps.ApiConfig",
-                "rest_framework"
             ],
         },
     },
