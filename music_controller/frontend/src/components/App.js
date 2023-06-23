@@ -6,6 +6,7 @@ import CreateRoomPage from "./CreateRoomPage";
 import Room from "./Room"
 import {BrowserRouter as Router, Routes, Route, Link, Redirect} from 'react-router-dom'
 
+
 export default class App extends Component {
     constructor(props) {
         super(props);
@@ -13,7 +14,7 @@ export default class App extends Component {
 
     render(){
         return (
-            <div>
+            <div className = "center">
            <Router>
                 <Routes>
                     <Route exact path ='/' element = {<HomePage/>}/>
