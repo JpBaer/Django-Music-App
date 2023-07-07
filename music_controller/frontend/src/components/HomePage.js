@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 import {Grid, Button, ButtonGroup, Typography} from "@material-ui/core"
-import {Link, Redirect} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 export default class HomePage extends Component {
     constructor(props){
