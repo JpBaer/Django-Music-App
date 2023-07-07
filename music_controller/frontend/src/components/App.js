@@ -24,6 +24,12 @@ export default class App extends Component {
         console.log(this.state.roomCode)
     }
 
+    leaveRoomCallback(){
+        this.setState({
+            roomCode: null
+        })
+    }
+
     render(){
         return (
             <div className = "center">
@@ -32,7 +38,7 @@ export default class App extends Component {
                     <Route exact path ='/' element={!this.state.roomCode ? <HomePage /> : <Navigate to={`/room/${this.state.roomCode}`}/>} />
                     <Route path = '/join' element = {<RoomJoinPage/>} />
                     <Route path = '/create' element = {<CreateRoomPage/>}/>
-                    <Route path = '/room/:roomCode' element = {<Room/>} />
+                    <Route path = '/room/:roomCode' element = {<Room leaveRoomCallback = {this.leaveRoomCallback}/>}/>
                 </Routes>
             </Router>
         

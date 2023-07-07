@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {Grid, Button, Typography} from '@material-ui/core';
 import {Link, Navigate} from "react-router-dom"
-function Room() {
+function Room(props) {
+  const {leaveRoomCallback} = props;
   const navigate = useNavigate();
   const { roomCode } = useParams();
   const [votesToSkip, setVotesToSkip] = useState(2);
@@ -10,11 +11,17 @@ function Room() {
   const [isHost, setIsHost] = useState(false);
 
   const getRoomDetails = () => {
-    fetch(`/api/get-room?code=${roomCode}`).then((response) => response.json()).then((data)=> {
+    fetch(`/api/get-room?code=${roomCode}`).then((response) => {
+    if(!response.ok){
+          leaveRoomCallback();
+          navigate("/")
+    }
+    response.json()}).then((data)=> {
         console.log(data)
         setVotesToSkip(data.votes_to_skip)
         setGuestCanPause(data.guest_can_pause)
         setIsHost(data.is_host)
+
     })
   }
 
